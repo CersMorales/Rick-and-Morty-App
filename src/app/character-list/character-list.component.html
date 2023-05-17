@@ -1,0 +1,15 @@
+<input  id="boton"  style="margin: 15px; width:500px; height:30px" f type="text" placeholder="Buscar personaje" [(ngModel)]="filterText">
+
+  <div *ngFor="let character of filteredCharacters | paginate: { itemsPerPage: 10, currentPage: p }">
+    
+    <img [src]="character.image" [alt]="character.name">
+    <h2>{{ character.name }}</h2>
+    <p>Estado: {{ character.status }}</p>
+    <p>Especie: {{ character.species }}</p>
+    <p>Genero: {{ character.gender }}</p>
+  </div>
+  
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  
+  <button style="margin: 15px" (click)="previousPage()">Pagina previa</button> 
+  <button style="margin: 15px" (click)="nextPage()">Pagina siguiente</button>
